@@ -8,7 +8,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
 import android.view.animation.DecelerateInterpolator
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_layout.*
@@ -57,19 +56,14 @@ class ItemsAdapter(private val itemsList: ArrayList<ItemVO>, private val isExpan
                 }
             }
 
-
             txtTitle.text = itemVO.title
 
             itemVO.subItemsList.forEach {
                 val view =
                     LayoutInflater.from(containerView.context).inflate(R.layout.subitem_layout, contentItems, false)
-                val layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
                 view.txtDescription.text = it.description
                 view.txtMoney.text = it.money
-                contentItems.addView(view, layoutParams)
+                contentItems.addView(view)
             }
 
         }
